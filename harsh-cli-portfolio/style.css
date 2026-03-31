@@ -1,0 +1,324 @@
+:root {
+  --bg: #0d1117;
+  --text: #e6edf3;
+  --green: #7ee787;
+  --blue: #79c0ff;
+  --yellow: #e3b341;
+  --red: #ff7b72;
+  --purple: #d2a8ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "IBM Plex Mono", monospace;
+}
+
+
+
+/* ASCII */
+.ascii-art {
+  font-family: "Courier New", monospace;
+  color: var(--green);
+  white-space: pre;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+/* Landing */
+#landing {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.6s ease;
+}
+
+.landing-hint {
+  margin-top: 20px;
+  color: var(--blue);
+}
+
+.landing-hint span {
+  color: var(--yellow);
+}
+
+body.started #landing {
+  height: auto;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+#landing-hint {
+  text-align: center;
+  color: var(--blue);
+  margin-top: -40px;
+  transition: opacity 0.4s ease;
+}
+
+#landing-hint span {
+  color: var(--yellow);
+}
+
+body.started #landing-hint {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* Output */
+#terminal-output {
+  display: none;
+  margin-bottom: 20px;
+}
+
+body.started #terminal-output {
+  display: block;
+}
+
+.output {
+  margin: 6px 0;
+}
+
+/* Input */
+#input-line {
+  display: flex;
+  align-items: center;
+}
+
+#prompt {
+  color: var(--green);
+  margin-right: 6px;
+}
+
+#command-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.output div {
+  margin: 4px 0;
+}
+
+
+/* Semantic colors */
+.directory { color: var(--green); }
+.file { color: var(--text); }
+.path { color: var(--blue); }
+.command { color: var(--yellow); }
+.error { color: var(--red); }
+.highlight-purple { color: var(--purple); }
+
+
+.cmd-col {
+  display: inline-block;
+  width: 8ch;   /* fixed command column */
+}
+
+#ascii-separator {
+  width: 100%;
+  max-width: 680px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--green),
+    transparent
+  );
+  margin: 12px 0 18px 0;
+  opacity: 0.8;
+  transition: all 0.6s ease;
+}
+
+body.started #ascii-separator {
+  max-width: 100%;
+  background: linear-gradient(
+    to right,
+    var(--green),
+    var(--green),
+    rgba(126, 231, 135, 0.4),
+    transparent
+  );
+  opacity: 0.9;
+}
+
+body.started #ascii-separator {
+  height: 2px;
+}
+
+
+/* show wave only AFTER start */
+body.started #ascii-wave {
+  opacity: 0.8;
+}
+
+#ascii-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* wave overlays INSIDE ASCII */
+#ascii-wave {
+  position: absolute;
+  top: 50%;                  /* CENTER vertically */
+  transform: translateY(-50%);
+  left: 0;
+
+  font-family: "Courier New", monospace;
+  color: var(--green);
+  white-space: pre;
+  line-height: 1;
+  height: 5em;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+/* show wave only AFTER start */
+body.started #ascii-wave {
+  opacity: 0.85;
+}
+
+#terminal {
+  height: 100vh;
+  padding: 32px 40px;
+  overflow-y: auto;
+  overflow-x: hidden; /* ✅ IMPORTANT */
+}
+
+#command-panel {
+  position: fixed;
+  right: 60px;
+  top: 180px;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 16px;
+  line-height: 1.6;
+
+  color: var(--text); /* instructions remain white */
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#command-panel .panel-content {
+  white-space: pre;
+}
+
+/* make only commands green */
+#command-panel .cmd {
+  display: inline-block;
+  width: 8ch;
+  color: var(--green);
+}
+
+/* slightly fade whole panel */
+body.started #command-panel.visible {
+  opacity: 0.7;
+}
+
+/* -------- Structured Section Output -------- */
+
+.section {
+  margin: 20px 0;
+  padding: 18px 22px;
+
+  border-left: 3px solid var(--green);
+  background: rgba(126, 231, 135, 0.05);
+
+  line-height: 1.7;
+}
+
+.section-title {
+  color: var(--green);
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.section-content {
+  color: var(--text);
+  opacity: 0.9;
+  white-space: pre-wrap;
+}
+
+.section-meta {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--blue);
+  opacity: 0.8;
+}
+
+.ascii-colored {
+  font-family: "Courier New", monospace;
+  font-size: 18.5px;         /* adjust between 5–8 */
+  line-height: 0.9;     /* 9 is option */
+  letter-spacing: 0px;
+
+  background: transparent;   /* important */
+  padding: 0;
+  margin: 0 0 20px 0;
+
+  overflow-x: auto;
+  display: inline-block;
+  text-shadow: 0 0 2px rgba(126, 231, 135, 0.3);
+}
+
+.section {
+  animation: fadeInSection 0.4s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInSection {
+  to { opacity: 1; }
+}
+
+.cert-image {
+  max-width: 600px;
+  width: 100%;
+  margin-top: 12px;
+  border: 1px solid rgba(126, 231, 135, 0.3);
+  border-radius: 6px;
+}
+
+.resume-link {
+  color: var(--green);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.resume-link:hover {
+  color: var(--yellow);
+}
+
+.contact-link {
+  color: var(--green);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.contact-link:hover {
+  color: var(--yellow);
+}
+
+.project-link {
+  color: var(--green);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.project-link:hover {
+  color: var(--yellow);
+}
