@@ -1,17 +1,22 @@
-## PEP Assignment: AWS EC2 Static Website Hosting with IAM Access Control
-### Deployed at: http://54.164.228.114
+## PEP Assignment 2: AWS S3 Static Website Hosting with Versioning & Lifecycle Management
+### Details:
+- Name: Harsh Sharma
+- Registration no.: 12324525
+- S3 URL: http://harsh-pep-assignment-2.s3-website-us-east-1.amazonaws.com
 
 ---
 
-### EC2 Instance:
-<img width="1728" height="1000" alt="Screenshot 2026-04-20 at 9 04 08 AM" src="https://github.com/user-attachments/assets/0b94e7e9-04f3-4480-b616-59467baa8981" />
+### Screenshots:
+### S3 bucket with objects:
+<img width="1728" height="997" alt="Screenshot 2026-04-27 at 5 26 25 PM" src="https://github.com/user-attachments/assets/9d65d734-be18-40ea-a1e0-f59aebb21621" />
 
 ---
 
-### No access user:
-<img width="1728" height="998" alt="Screenshot 2026-04-20 at 9 22 34 AM" src="https://github.com/user-attachments/assets/92124467-7a4a-4690-8416-4d67fbfa4be4" />
+### Versioning:
+<img width="1728" height="999" alt="Screenshot 2026-04-27 at 5 27 53 PM" src="https://github.com/user-attachments/assets/14b0168a-39d5-4f80-9a24-ec315c13f24e" />
+<img width="1728" height="998" alt="Screenshot 2026-04-27 at 5 28 12 PM" src="https://github.com/user-attachments/assets/8aaf6eb2-92bb-492d-8970-779ccb77815e" />
 
 ---
 
-### EC2 access user:
-<img width="1728" height="998" alt="Screenshot 2026-04-20 at 9 24 28 AM" src="https://github.com/user-attachments/assets/70c693ce-f11f-4d79-a464-19d3b6259258" />
+### Lifecycle Rule:
+<img width="1728" height="998" alt="Screenshot 2026-04-27 at 5 29 11 PM" src="https://github.com/user-attachments/assets/df13c0e2-6094-4619-b1cb-d247ca28989b" />
